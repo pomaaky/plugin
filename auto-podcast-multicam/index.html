@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <title>Auto Podcast Multicam</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="panel">
+    <header>
+      <h1>Auto Podcast Multicam</h1>
+      <p>Importa una cartella, sincronizza clip multicamera e crea una versione completa più una con highlights.</p>
+    </header>
+
+    <section class="card">
+      <label for="folderPath">Cartella sorgente</label>
+      <div class="row">
+        <input id="folderPath" type="text" placeholder="Scegli una cartella con video/audio/transcript" />
+        <button id="chooseFolder" type="button">Scegli</button>
+      </div>
+      <small>Sono supportati video, audio e file transcript .txt/.srt/.vtt nella stessa cartella.</small>
+    </section>
+
+    <section class="card grid">
+      <label>
+        Modalità sync
+        <select id="syncMode">
+          <option value="timecode">Timecode / data file</option>
+          <option value="filename">Nome file / progressivo</option>
+        </select>
+      </label>
+      <label>
+        Frequenza taglio multicam
+        <select id="cutStyle">
+          <option value="balanced">Bilanciata</option>
+          <option value="dynamic">Dinamica</option>
+          <option value="calm">Calma</option>
+        </select>
+      </label>
+      <label>
+        Durata highlights
+        <select id="highlightLength">
+          <option value="short">Breve (2-4 min)</option>
+          <option value="medium">Media (5-8 min)</option>
+          <option value="long">Lunga (10-15 min)</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="card">
+      <label class="check">
+        <input id="useGemini" type="checkbox" />
+        Usa AI Gemini (opzionale, con API key gratuita dell'utente)
+      </label>
+      <input id="geminiKey" type="password" placeholder="Gemini API key" disabled />
+      <small>La chiave resta nel pannello e viene usata solo per chiedere a Gemini un piano di montaggio/highlights basato su nomi file e transcript testuali.</small>
+    </section>
+
+    <section class="actions">
+      <button id="run" type="button">Crea montaggi</button>
+    </section>
+
+    <section class="card log-card">
+      <h2>Log</h2>
+      <pre id="log">Pronto.</pre>
+    </section>
+  </main>
+  <script src="js/CSInterface.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
